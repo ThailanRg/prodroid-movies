@@ -1,7 +1,7 @@
 package com.example.prodroidmovielist.feature.list.data.remote
 
-import com.example.prodroidmovielist.feature.list.data.model.MovieDto
+import com.example.prodroidmovielist.feature.list.data.model.MoviesDto
 
 interface DataSource {
-    fun getList():List<MovieDto>
+    suspend fun getList():List<MoviesDto>
 }

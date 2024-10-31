@@ -3,7 +3,6 @@ package com.example.prodroidmovielist.feature.list.presentation
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.prodroidmovielist.feature.list.data.model.MovieDto
 import com.example.prodroidmovielist.feature.list.domain.ListUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,6 +15,12 @@ private val useCase: ListUseCase
 
     var uiState = MutableStateFlow(ListUiState())
         private set
+
+    init {
+        viewModelScope.launch {
+            useCase()
+        }
+    }
 
     fun onEvent( event: OnEvenListScreen){
         when(event){
@@ -31,10 +36,6 @@ private val useCase: ListUseCase
 
             block = {
                 Log.d("TAG", "initScreen: ")
-                updateState(uiState.value.copy(list = listOf(
-                    MovieDto(id = 1, title = "lanterna verde"),
-                    MovieDto(id = 0, title = "marvel")
-                )))
             }
         )
     }

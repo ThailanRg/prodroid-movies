@@ -1,7 +1,7 @@
 package com.example.prodroidmovielist.feature.list.data.repository
 
-import com.example.prodroidmovielist.feature.list.data.model.MovieDto
+import com.example.prodroidmovielist.feature.list.data.model.MoviesDto
 
 interface Repository {
-    fun getList():List<MovieDto>
+    suspend fun getList():List<MoviesDto>
 }

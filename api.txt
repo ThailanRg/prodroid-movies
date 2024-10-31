@@ -1,0 +1,24 @@
+dados sobre chaves:
+
+https://www.themoviedb.org/talk/6722a29a991edb035c5f8186?page=1#6722a29a991edb035c5f8189
+https://www.themoviedb.org/settings/api
+
+API Key: db3131facc0e0172e19cb79a740cb978
+
+Sample request: https://api.themoviedb.org/3/movie/550?api_key=db3131facc0e0172e19cb79a740cb978
+
+The Movie Database Team
+https://www.themoviedb.org
+
+
+Token de Leitura da API
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjMxMzFmYWNjMGUwMTcyZTE5Y2I3OWE3NDBjYjk3OCIsIm5iZiI6MTczMDMyMzMwNy43NDQ5ODk2LCJzdWIiOiI2NzIyYTE5ZTgyNmZlNTc5OWNjNGMzODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.CTFlu2AnFKALAH9FJY4F7O2mC-DZhWvlfWHCOd4BByQ
+
+
+endpoint list
+
+https://developer.themoviedb.org/reference/account-lists
+
+start:
+
+https://developer.themoviedb.org/docs/getting-started

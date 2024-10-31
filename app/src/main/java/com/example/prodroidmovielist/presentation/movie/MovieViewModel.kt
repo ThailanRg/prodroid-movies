@@ -1,46 +1,39 @@
-package com.example.prodroidmovielist.feature.list.presentation
+package com.example.prodroidmovielist.presentation.movie
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.prodroidmovielist.feature.list.domain.ListUseCase
+import com.example.prodroidmovielist.domain.MovieUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class ListViewModel(
-private val useCase: ListUseCase
+class MovieViewModel(
+    private val useCase: MovieUseCase
 ) : ViewModel() {
 
-    var uiState = MutableStateFlow(ListUiState())
+    var uiState = MutableStateFlow(MovieUiState())
         private set
 
-    init {
-        viewModelScope.launch {
-            useCase()
+    fun handleIntent(event: MovieIntent) {
+        when (event) {
+            is MovieIntent.LoadingMovie -> initScreen(event.id)
         }
     }
 
-    fun onEvent( event: OnEvenListScreen){
-        when(event){
-            is OnEvenListScreen.InitScreen -> initScreen()
-        }
-    }
-
-    private fun initScreen() {
+    private fun initScreen(id:String) {
         viewModelScope.launch(
             context = CoroutineExceptionHandler { _, _ ->
                 Log.d("TAG", "initScreen: ")
             },
-
             block = {
-                Log.d("TAG", "initScreen: ")
+                updateState(uiState.value.copy(movie = useCase(id)))
             }
         )
     }
 
-    private fun updateState(state: ListUiState){
+    private fun updateState(state: MovieUiState) {
         uiState.update { state }
     }
 }

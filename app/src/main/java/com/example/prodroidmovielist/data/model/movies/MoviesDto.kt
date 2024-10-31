@@ -1,4 +1,4 @@
-package com.example.prodroidmovielist.feature.list.data.model
+package com.example.prodroidmovielist.data.model.movies
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

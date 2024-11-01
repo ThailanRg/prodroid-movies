@@ -7,12 +7,9 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.prodroidmovielist.data.model.movies.MoviesDto
-import com.example.prodroidmovielist.data.model.movies.ResultsDto
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.prodroidmovielist.presentation.movies.component.MoviesItem
-import com.example.prodroidmovielist.presentation.theme.ProdroidMovieListTheme
 
 @Composable
 fun MoviesScreen(
@@ -20,6 +17,9 @@ fun MoviesScreen(
     modifier: Modifier = Modifier,
     onClick: (String) -> Unit = {},
 ) {
+
+    val lazyPokemon = uiState.movies.collectAsLazyPagingItems()
+
     LazyVerticalGrid(
         modifier = modifier,
         columns = GridCells.Fixed(2),
@@ -28,33 +28,33 @@ fun MoviesScreen(
         contentPadding = PaddingValues(18.dp)
     ) {
         items(
-            items = uiState.movies.results,
-            key = { it.id }
-        ) { movie ->
+            count = lazyPokemon.itemCount,
+        ) { position ->
             MoviesItem(
-                movie = movie,
+                movie = lazyPokemon[position],
                 onClick = onClick
             )
         }
     }
+
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ListScreenPreview() {
-    ProdroidMovieListTheme {
-        MoviesScreen(
-            MoviesUiState(
-                movies = MoviesDto(
-                    page = 0,
-                    results = listOf(
-                        ResultsDto(id = 1, title = "lanterna verde"),
-                        ResultsDto(id = 0, title = "marvel")
-                    )
-                )
-            )
-        )
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun ListScreenPreview() {
+//    ProdroidMovieListTheme {
+//        MoviesScreen(
+//            MoviesUiState(
+//                movies = MoviesDto(
+//                    page = 0,
+//                    results = listOf(
+//                        ResultsDto(id = 1, title = "lanterna verde"),
+//                        ResultsDto(id = 0, title = "marvel")
+//                    )
+//                )
+//            )
+//        )
+//    }
+//}
 
 

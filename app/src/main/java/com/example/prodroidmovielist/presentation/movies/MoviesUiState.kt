@@ -1,7 +1,10 @@
 package com.example.prodroidmovielist.presentation.movies
 
-import com.example.prodroidmovielist.data.model.movies.MoviesDto
+import androidx.paging.PagingData
+import com.example.prodroidmovielist.data.model.movies.ResultsDto
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 data class MoviesUiState(
-    val movies: MoviesDto = MoviesDto(page = 0)
+    val movies: Flow<PagingData<ResultsDto>> = flow {  }
 )

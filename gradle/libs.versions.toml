@@ -16,6 +16,9 @@ navigationCompose = "2.8.3"
 slf4j = "1.7.36"
 serialization = "1.7.3"
 plugin-serialization = "1.9.10"
+paging = "3.2.1"
+pagingCompose = "3.3.0-alpha05"
+core-splashscreen = "1.0.1"
 
 [libraries]
 
@@ -38,6 +41,9 @@ androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", versi
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
+paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
 
 #IO
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }

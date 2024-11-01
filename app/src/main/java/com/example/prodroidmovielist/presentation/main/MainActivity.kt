@@ -19,11 +19,13 @@ import com.example.prodroidmovielist.presentation.theme.black_1
 import com.example.prodroidmovielist.presentation.theme.black_2
 import com.example.prodroidmovielist.presentation.theme.black_3
 import com.example.prodroidmovielist.presentation.theme.black_4
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()
+        installSplashScreen()
         setContent {
             ProdroidMovieListTheme {
                 App()

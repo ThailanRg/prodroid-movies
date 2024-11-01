@@ -1,67 +1,54 @@
 package com.example.prodroidmovielist.presentation.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.prodroidmovielist.presentation.movie.MovieIntent
-import com.example.prodroidmovielist.presentation.movie.MovieScreen
-import com.example.prodroidmovielist.presentation.movie.MovieViewModel
-import com.example.prodroidmovielist.presentation.movies.MoviesScreen
-import com.example.prodroidmovielist.presentation.movies.MoviesViewModel
-import com.example.prodroidmovielist.presentation.movies.MoviesIntent
+import com.example.prodroidmovielist.core.routes.Routes
+import com.example.prodroidmovielist.presentation.movie.navigateToMovies
+import com.example.prodroidmovielist.presentation.movies.navigateToMovie
 import com.example.prodroidmovielist.presentation.theme.ProdroidMovieListTheme
-import org.koin.androidx.compose.koinViewModel
-import org.koin.core.parameter.parametersOf
+import com.example.prodroidmovielist.presentation.theme.black_1
+import com.example.prodroidmovielist.presentation.theme.black_2
+import com.example.prodroidmovielist.presentation.theme.black_3
+import com.example.prodroidmovielist.presentation.theme.black_4
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
         setContent {
-
-
             ProdroidMovieListTheme {
-
-                val controller = rememberNavController()
-
-                NavHost(navController = controller, startDestination = "movies") {
-                    composable("movies") {
-
-                        val viewModel = koinViewModel<MoviesViewModel>()
-
-                        LaunchedEffect(Unit) {
-                            viewModel.handleIntent(MoviesIntent.LoadingMovies)
-                        }
-
-                        val uiState = viewModel.uiState.collectAsState()
-
-                        MoviesScreen(uiState = uiState.value, onClick = {
-                            Log.d("TAG", "onCreate: ${it}")
-                            controller.navigate("details/$it")
-                        })
-                    }
-                    composable("details/{id}") { navBackStackEntry ->
-                        val uId = navBackStackEntry.arguments?.getString( "id" ).orEmpty()
-
-                        val viewModel = koinViewModel<MovieViewModel>()
-
-                        LaunchedEffect(Unit) {
-                            viewModel.handleIntent(MovieIntent.LoadingMovie(uId))
-                        }
-
-                        val uiState = viewModel.uiState.collectAsState()
-
-                        MovieScreen(uiState = uiState.value, uId = uId )
-                    }
-                }
+                App()
             }
+        }
+    }
+}
+
+@Composable
+fun App() {
+    val controller = rememberNavController()
+
+    val brush = Brush.verticalGradient(listOf(black_1, black_2,black_3,black_4))
+
+    Column(
+        modifier = Modifier.fillMaxSize().background(brush = brush)
+    ) {
+        NavHost(
+            navController = controller,
+            startDestination = Routes.Movies
+        ) {
+            navigateToMovies {
+                controller.navigate(Routes.Movie(it))
+            }
+            navigateToMovie()
         }
     }
 }

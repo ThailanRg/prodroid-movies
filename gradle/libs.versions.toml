@@ -1,25 +1,26 @@
 [versions]
 agp = "8.7.1"
+coilCompose = "2.5.0"
 koinAndroid = "4.0.0"
 kotlin = "2.0.20"
-coreKtx = "1.13.1"
+coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 ktorClientCio = "3.0.0"
 ktorVersion = "3.0.0"
-lifecycleRuntimeKtx = "2.6.1"
+lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
-composeBom = "2024.04.01"
+composeBom = "2024.10.01"
 navigationCompose = "2.8.3"
-slf4jVersion = "1.7.36"
-serializationVersion = "1.6.0"
-serialization = "1.9.10"
+slf4j = "1.7.36"
+serialization = "1.7.3"
+plugin-serialization = "1.9.10"
 
 [libraries]
 
 #JETBRAINS
-jetbrains-kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serializationVersion" } # conversao objeto para json
+jetbrains-kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" } # conversao objeto para json
 
 #ANDROIDX
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,13 +48,14 @@ ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "k
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorVersion" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorVersion" } # ktor convertar objetos para configuracao gosn
 ktor-serialization-kotlinx = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorVersion" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 
 #THIRD
-slf4j-android = { module = "org.slf4j:slf4j-android", version.ref = "slf4jVersion" } # implementacao de logger
+slf4j-android = { module = "org.slf4j:slf4j-android", version.ref = "slf4j" } # implementacao de logger
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-plugin-serialization = { id = "plugin.serialization", version.ref = "serialization" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "plugin-serialization" }
 

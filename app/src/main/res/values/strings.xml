@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">prodroid movie list</string>
+    <string name="genres">Gênero</string>
+    <string name="release">Lançamento:</string>
 </resources>

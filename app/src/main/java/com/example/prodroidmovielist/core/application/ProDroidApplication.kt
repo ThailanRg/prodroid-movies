@@ -1,4 +1,4 @@
-package com.example.prodroidmovielist.application
+package com.example.prodroidmovielist.core.application
 
 import android.app.Application
 import com.example.prodroidmovielist.di.moviesModule

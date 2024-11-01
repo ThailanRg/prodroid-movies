@@ -1,4 +1,4 @@
-package com.example.prodroidmovielist.utils
+package com.example.prodroidmovielist.core.utils
 
 const val TOKEN_READ_ONLY = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjMxMzFmYWNjMGUwMTcyZTE5Y2I3OWE3NDBjYjk3OCIsIm5iZiI6MTczMDMyMzMwNy43NDQ5ODk2LCJzdWIiOiI2NzIyYTE5ZTgyNmZlNTc5OWNjNGMzODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.CTFlu2AnFKALAH9FJY4F7O2mC-DZhWvlfWHCOd4BByQ"
 const val AUTHORIZATION = "Authorization"

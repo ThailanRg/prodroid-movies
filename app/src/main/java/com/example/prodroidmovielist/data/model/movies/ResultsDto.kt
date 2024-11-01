@@ -8,5 +8,11 @@ data class ResultsDto(
     @SerialName("id")
     val id:Int,
     @SerialName("title")
-    val title:String = ""
+    val title:String = "" ,
+    @SerialName("original_title")
+    val originalTitle:String = "" ,
+    @SerialName("poster_path")
+    val posterPath:String = "",
+    @SerialName("overview")
+    val overview:String = ""
 )

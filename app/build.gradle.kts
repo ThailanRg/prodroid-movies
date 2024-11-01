@@ -1,18 +1,18 @@
 plugins {
+    alias(libs.plugins.serialization)
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    kotlin("plugin.serialization") version "1.9.10"
 }
 
 android {
     namespace = "com.example.prodroidmovielist"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.prodroidmovielist"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -69,8 +69,7 @@ dependencies {
     implementation(libs.ktor.client.logging)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx)
+    implementation(libs.coil.compose)
     //THIRD
     implementation(libs.slf4j.android)
-
-
 }

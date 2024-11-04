@@ -25,7 +25,8 @@ fun NavGraphBuilder.navigateToMovies(
             uiState = uiState.value,
             onClick = { id ->
                 navigateTo(id)
-            }
+            },
+            event = viewModel::handleIntent
         )
     }
 }

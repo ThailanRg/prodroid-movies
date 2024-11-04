@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MoviesViewModel(
-    private val useCase: MoviesUseCase
+    private val useCase: MoviesUseCase,
 ) : ViewModel() {
 
     var uiState = MutableStateFlow(MoviesUiState())
@@ -23,11 +23,11 @@ class MoviesViewModel(
 
     private fun initScreen() {
         viewModelScope.launch {
-            updateState(uiState.value.copy(movies = useCase(), isLoading = false))
+            updateState(uiState.value.copy(movies = useCase()))
         }
     }
 
-    private fun changeLoadingState(isLoading:Boolean) {
+    private fun changeLoadingState(isLoading: Boolean) {
         viewModelScope.launch {
             updateState(uiState.value.copy(isLoading = isLoading))
         }

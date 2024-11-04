@@ -16,14 +16,14 @@ class PagingSource(
 
             val currentPage = params.key ?: 1
 
-            val movies = remoteDataSource.movies(page = currentPage.toString())
+            val result = remoteDataSource.movies(page = currentPage.toString())
 
             LoadResult.Page(
-                data = movies.results,
+                data = result.results,
                 nextKey = currentPage + 1,
                 prevKey = null
-
             )
+
         } catch (exception: IOException) {
             return LoadResult.Error(exception)
         } catch (exception: HttpException) {

@@ -13,6 +13,7 @@ import com.example.prodroidmovielist.data.model.movies.MoviesDto
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.android.Android
+import io.ktor.client.plugins.HttpRequestRetry
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel
@@ -22,6 +23,7 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.request.url
 import io.ktor.client.statement.HttpResponse
+import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
@@ -45,7 +47,7 @@ class DataSourceImpl : DataSource {
         page: String = ""
     ): HttpResponse {
         return this.get {
-            url("${BASE_URL}/$endpoint")
+            url(endpoint)
             parameter(LANGUAGE, PT_BR)
             if (page.isNotEmpty()) parameter(PAGE, page)
         }
@@ -61,8 +63,16 @@ class DataSourceImpl : DataSource {
             })
         }
         defaultRequest {
+            url(BASE_URL)
             header(ACCEPT, APPLICATION_JSON)
             header(AUTHORIZATION, TOKEN_READ_ONLY)
+        }
+        install(HttpRequestRetry) {
+            retryOnServerErrors(maxRetries = 3)
+            retryIf { _, response ->
+                !response.status.isSuccess()
+            }
+            exponentialDelay()
         }
     }
 

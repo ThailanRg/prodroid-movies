@@ -1,10 +1,8 @@
 package com.example.prodroidmovielist.presentation.movies
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.prodroidmovielist.domain.MoviesUseCase
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -23,13 +21,9 @@ class MoviesViewModel(
     }
 
     private fun initScreen() {
-        viewModelScope.launch(
-            context = CoroutineExceptionHandler { _, _ ->
-            },
-            block = {
-                updateState(uiState.value.copy(movies = useCase()))
-            }
-        )
+        viewModelScope.launch {
+            updateState(uiState.value.copy(movies = useCase(), isLoading = false))
+        }
     }
 
     private fun updateState(state: MoviesUiState) {

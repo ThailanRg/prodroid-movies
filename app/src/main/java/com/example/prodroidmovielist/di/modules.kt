@@ -32,7 +32,7 @@ private val providePresentationLayerMovies = module {
     viewModelOf(::MoviesViewModel)
     factoryOf(::PagingSource)
     single {
-        PagingConfig(pageSize = 20)
+        PagingConfig(pageSize = 10)
     }
     single {
         Pager(config = get(), pagingSourceFactory = { get<PagingSource>() })

@@ -146,14 +146,12 @@ fun StarIcon(
     maxStart: Int = 5
 ) {
 
-    val amountStart = List(maxStart) { it }
     var positionClicked by remember { mutableIntStateOf(0) }
-
 
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(CustomDimens.dimens.spaceBy)
     ) {
-        items(count = amountStart.size) { position ->
+        items(count = List(maxStart) { it }.size) { position ->
 
             when {
                 position <= positionClicked -> {

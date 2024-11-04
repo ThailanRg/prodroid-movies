@@ -16,13 +16,20 @@ class MoviesViewModel(
 
     fun handleIntent(event: MoviesIntent) {
         when (event) {
-            is MoviesIntent.LoadingMovies -> initScreen()
+            is MoviesIntent.InitScreen -> initScreen()
+            is MoviesIntent.ChangeLoadingState -> changeLoadingState(event.isLoading)
         }
     }
 
     private fun initScreen() {
         viewModelScope.launch {
             updateState(uiState.value.copy(movies = useCase(), isLoading = false))
+        }
+    }
+
+    private fun changeLoadingState(isLoading:Boolean) {
+        viewModelScope.launch {
+            updateState(uiState.value.copy(isLoading = isLoading))
         }
     }
 

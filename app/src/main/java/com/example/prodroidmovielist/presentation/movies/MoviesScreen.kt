@@ -32,7 +32,7 @@ fun MoviesScreen(
     onClick: (String) -> Unit = {},
 ) {
 
-    val lazyPokemon = uiState.movies.collectAsLazyPagingItems()
+    val lazyMovies = uiState.movies.collectAsLazyPagingItems()
 
     ShimmerMovies(modifier = Modifier
         .fillMaxSize()
@@ -60,10 +60,10 @@ fun MoviesScreen(
                     contentPadding = PaddingValues(CustomDimens.dimens.containerPadding)
                 ) {
                     items(
-                        count = lazyPokemon.itemCount,
+                        count = lazyMovies.itemCount,
                     ) { position ->
                         MoviesItem(
-                            movie = lazyPokemon[position], onClick = onClick
+                            movie = lazyMovies[position], onClick = onClick
                         )
                     }
                 }

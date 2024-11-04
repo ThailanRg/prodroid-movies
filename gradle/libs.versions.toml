@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.1"
+agp = "8.7.2"
 coilCompose = "2.5.0"
 koinAndroid = "4.0.0"
 kotlin = "2.0.20"
@@ -16,8 +16,8 @@ navigationCompose = "2.8.3"
 slf4j = "1.7.36"
 serialization = "1.7.3"
 plugin-serialization = "1.9.10"
-paging = "3.2.1"
-pagingCompose = "3.3.0-alpha05"
+paging = "3.3.2"
+pagingCompose = "3.3.2"
 core-splashscreen = "1.0.1"
 
 [libraries]

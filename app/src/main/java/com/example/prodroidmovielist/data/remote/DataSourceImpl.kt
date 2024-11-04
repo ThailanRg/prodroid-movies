@@ -32,7 +32,7 @@ class DataSourceImpl : DataSource {
     override suspend fun movies(page: String): MoviesDto {
         val httpClient = setupHttpClient()
         return httpClient.request(
-            endpoint = "popular",
+            endpoint = END_POINT_LIST,
             page = page
         ).body<MoviesDto>()
     }
@@ -74,6 +74,10 @@ class DataSourceImpl : DataSource {
             }
             exponentialDelay()
         }
+    }
+
+    companion object {
+        const val END_POINT_LIST = "popular"
     }
 
 }

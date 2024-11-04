@@ -18,6 +18,13 @@ val rajdHaniFamily = FontFamily(
 )
 
 val Typography = Typography(
+    headlineMedium = TextStyle(
+        fontFamily = rajdHaniFamily,
+        fontWeight = FontWeight.Medium,
+        color = PurpleHeadProDroid,
+        fontSize = 16.sp,
+    ),
+
     titleLarge = TextStyle(
         fontFamily = rajdHaniFamily,
         fontWeight = FontWeight.Bold,
@@ -27,9 +34,9 @@ val Typography = Typography(
 
     bodyLarge = TextStyle(
         fontFamily = rajdHaniFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp,
-        lineHeight = 10.sp,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        lineHeight = 25.sp,
         color = Color.White,
         letterSpacing = 0.5.sp
     ),

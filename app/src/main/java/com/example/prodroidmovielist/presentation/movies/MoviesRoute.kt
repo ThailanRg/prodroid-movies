@@ -12,7 +12,7 @@ import com.example.prodroidmovielist.presentation.movie.MovieViewModel
 import org.koin.androidx.compose.koinViewModel
 
 fun NavGraphBuilder.navigateToMovie(
-    navigateTo: (String) -> Unit = {}
+    navigateTo: () -> Unit = {}
 ) {
     composable<Routes.Movie> { arguments ->
 
@@ -26,7 +26,9 @@ fun NavGraphBuilder.navigateToMovie(
 
         val uiState = viewModel.uiState.collectAsState()
 
-        MovieScreen(uiState = uiState.value)
+        MovieScreen(uiState = uiState.value){
+            navigateTo()
+        }
 
     }
 }

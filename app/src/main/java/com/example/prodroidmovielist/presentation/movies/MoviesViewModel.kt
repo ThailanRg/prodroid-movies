@@ -25,10 +25,9 @@ class MoviesViewModel(
     private fun initScreen() {
         viewModelScope.launch(
             context = CoroutineExceptionHandler { _, _ ->
-                Log.d("TAG", "initScreen: ")
             },
             block = {
-                updateState(uiState.value.copy(movies = useCase(), isLoading = false))
+                updateState(uiState.value.copy(movies = useCase()))
             }
         )
     }

@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.prodroidmovielist.R
 import com.example.prodroidmovielist.data.model.movies.ResultsDto
+import com.example.prodroidmovielist.presentation.theme.CustomDimens
 import com.example.prodroidmovielist.presentation.theme.black_1
 
 @Composable
@@ -34,17 +35,13 @@ fun MoviesItem(
     modifier: Modifier = Modifier,
     onClick: (String) -> Unit = {}
 ) {
-
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(8.dp)
-            .clickable {
-                onClick(movie?.id.toString())
-            },
+            .clickable { onClick(movie?.id.toString()) },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Box() {
+        Box {
             AsyncImage(
                 model = movie?.loadImage().orEmpty(),
                 placeholder = painterResource(R.drawable.placeholder),
@@ -93,7 +90,7 @@ fun MovieInfoText(
         maxLines = maxLines,
         overflow = overflow,
         textAlign = TextAlign.Center,
-        modifier = modifier.padding(top = 8.dp),
+        modifier = modifier.padding(top = CustomDimens.dimens.containerPadding),
     )
 }
 

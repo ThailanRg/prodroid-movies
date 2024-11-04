@@ -3,4 +3,6 @@
     <string name="genres">Categoria: %1$s</string>
     <string name="release">Ano: %1$s</string>
     <string name="vote_count">(%1$s avaliações)</string>
+    <string name="explorer">Explorar</string>
+    <string name="back">Voltar</string>
 </resources>

@@ -29,6 +29,5 @@ fun NavGraphBuilder.navigateToMovies(
                 navigateTo(id)
             }
         )
-
     }
 }

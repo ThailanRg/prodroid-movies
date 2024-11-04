@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 data class Dimens(
     val horizontalContainerPadding : Dp = 16.dp,
     val containerPadding : Dp = 16.dp,
+    val spaceSection : Dp = 8.dp,
     val verticalContainerPadding : Dp = 16.dp,
     val spaceBy : Dp = 8.dp,
 )

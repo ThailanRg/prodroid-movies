@@ -4,6 +4,7 @@ const val TOKEN_READ_ONLY = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjMxMzFmYWN
 const val AUTHORIZATION = "Authorization"
 const val LANGUAGE = "language"
 const val EN_US = "en-US"
+const val PT_BR = "pt-BR"
 const val PAGE = "page"
 const val ACCEPT = "accept"
 const val APPLICATION_JSON = "application/json"

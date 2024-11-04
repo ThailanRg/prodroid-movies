@@ -28,7 +28,7 @@ class MoviesViewModel(
                 Log.d("TAG", "initScreen: ")
             },
             block = {
-                updateState(uiState.value.copy(movies = useCase()))
+                updateState(uiState.value.copy(movies = useCase(), isLoading = false))
             }
         )
     }

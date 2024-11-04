@@ -6,5 +6,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 data class MoviesUiState(
-    val movies: Flow<PagingData<ResultsDto>> = flow {  }
+    val movies: Flow<PagingData<ResultsDto>> = flow {  },
+    val isLoading: Boolean = true
 )

@@ -15,4 +15,6 @@ data class ResultsDto(
     val posterPath:String = "",
     @SerialName("overview")
     val overview:String = ""
-)
+){
+    fun loadImage () = "https://image.tmdb.org/t/p/w500/${posterPath}"
+}

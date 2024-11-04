@@ -21,9 +21,8 @@ val Typography = Typography(
     titleLarge = TextStyle(
         fontFamily = rajdHaniFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = 20.sp,
-        lineHeight = 10.sp,
-        letterSpacing = 0.sp
+        color = Color.White,
+        fontSize = 22.sp,
     ),
 
     bodyLarge = TextStyle(
@@ -36,7 +35,15 @@ val Typography = Typography(
     ),
     bodyMedium = TextStyle(
         fontFamily = rajdHaniFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
+        fontSize = 10.sp,
+        lineHeight = 10.sp,
+        color = Color.White,
+        letterSpacing = 0.5.sp
+    ),
+    bodySmall = TextStyle(
+        fontFamily = rajdHaniFamily,
+        fontWeight = FontWeight.Medium,
         fontSize = 10.sp,
         lineHeight = 10.sp,
         color = Color.White,

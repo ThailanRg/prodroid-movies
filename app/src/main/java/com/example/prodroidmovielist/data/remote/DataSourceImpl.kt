@@ -4,9 +4,9 @@ import com.example.prodroidmovielist.core.utils.ACCEPT
 import com.example.prodroidmovielist.core.utils.APPLICATION_JSON
 import com.example.prodroidmovielist.core.utils.AUTHORIZATION
 import com.example.prodroidmovielist.core.utils.BASE_URL
-import com.example.prodroidmovielist.core.utils.EN_US
 import com.example.prodroidmovielist.core.utils.LANGUAGE
 import com.example.prodroidmovielist.core.utils.PAGE
+import com.example.prodroidmovielist.core.utils.PT_BR
 import com.example.prodroidmovielist.core.utils.TOKEN_READ_ONLY
 import com.example.prodroidmovielist.data.model.movie.MovieDto
 import com.example.prodroidmovielist.data.model.movies.MoviesDto
@@ -46,6 +46,7 @@ class DataSourceImpl : DataSource {
     ): HttpResponse {
         return this.get {
             url("${BASE_URL}/$endpoint")
+            parameter(LANGUAGE, PT_BR)
             if (page.isNotEmpty()) parameter(PAGE, page)
         }
     }
@@ -62,7 +63,6 @@ class DataSourceImpl : DataSource {
         defaultRequest {
             header(ACCEPT, APPLICATION_JSON)
             header(AUTHORIZATION, TOKEN_READ_ONLY)
-            header(LANGUAGE, EN_US)
         }
     }
 

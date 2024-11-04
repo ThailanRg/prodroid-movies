@@ -9,8 +9,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.prodroidmovielist.core.routes.Routes
-import com.example.prodroidmovielist.presentation.movie.navigateToMovies
-import com.example.prodroidmovielist.presentation.movies.navigateToMovie
+import com.example.prodroidmovielist.presentation.movie.navigateToMovie
+import com.example.prodroidmovielist.presentation.movies.navigateToMovies
 import com.example.prodroidmovielist.presentation.theme.ProdroidMovieListTheme
 
 class MainActivity : ComponentActivity() {

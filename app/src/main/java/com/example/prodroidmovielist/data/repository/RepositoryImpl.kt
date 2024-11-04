@@ -15,7 +15,7 @@ class RepositoryImpl(
 ) : Repository {
     override suspend fun movies() : Flow<PagingData<ResultsDto>> {
         return Pager(
-            config = PagingConfig(pageSize = 20),
+            config = PagingConfig(pageSize = 10),
             pagingSourceFactory = { pagingSource }
         ).flow
     }

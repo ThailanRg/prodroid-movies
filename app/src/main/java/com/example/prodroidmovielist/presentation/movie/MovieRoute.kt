@@ -4,31 +4,28 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import androidx.navigation.toRoute
 import com.example.prodroidmovielist.core.routes.Routes
-import com.example.prodroidmovielist.presentation.movies.MoviesIntent
-import com.example.prodroidmovielist.presentation.movies.MoviesScreen
-import com.example.prodroidmovielist.presentation.movies.MoviesViewModel
 import org.koin.androidx.compose.koinViewModel
 
-fun NavGraphBuilder.navigateToMovies(
-    navigateTo: (String) -> Unit = {}
+fun NavGraphBuilder.navigateToMovie(
+    navigateTo: () -> Unit = {}
 ) {
-    composable<Routes.Movies> {
+    composable<Routes.Movie> { arguments ->
 
-        val viewModel = koinViewModel<MoviesViewModel>()
+        val args = arguments.toRoute<Routes.Movie>()
+
+        val viewModel = koinViewModel<MovieViewModel>()
 
         LaunchedEffect(Unit) {
-            viewModel.handleIntent(MoviesIntent.InitScreen)
+            viewModel.handleIntent(MovieIntent.LoadingMovie(args.id))
         }
 
         val uiState = viewModel.uiState.collectAsState()
 
-        MoviesScreen(
-            uiState = uiState.value,
-            onClick = { id ->
-                viewModel.handleIntent(MoviesIntent.ChangeLoadingState(true))
-                navigateTo(id)
-            }
-        )
+        MovieScreen(uiState = uiState.value){
+            navigateTo()
+        }
+
     }
 }

@@ -1,5 +1,5 @@
 
-## Tecnologias e Bibliotecas Utilizadas
+## Tópicos abordados
 
 - **Ktor**: Framework para comunicação HTTP com o backend.
 - **Jetpack Compose**: Framework para construção da interface de usuário (UI).

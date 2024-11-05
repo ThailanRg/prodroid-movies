@@ -1,4 +1,4 @@
-![Screenshot_20241105_094922](https://github.com/user-attachments/assets/6a1774a8-7c74-4b1b-b988-50d523edab2e)
+
 ## Tecnologias e Bibliotecas Utilizadas
 
 - **Ktor**: Framework para comunicação HTTP com o backend.

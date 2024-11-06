@@ -18,5 +18,5 @@ A arquitetura do projeto segue o padrão **Clean Architecture** com as seguintes
 | Lista | Detalhes |
 | -------- | ------- |
 | <img src="https://github.com/user-attachments/assets/07d362ef-c497-4abc-9a9c-2e45eef5e3c9" height="800" />  | <img src="https://github.com/user-attachments/assets/499c75e7-83c8-466a-a633-bcfbb22c857c" height="800" />
-    |
+
 

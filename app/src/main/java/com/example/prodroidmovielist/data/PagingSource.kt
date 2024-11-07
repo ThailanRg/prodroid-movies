@@ -1,14 +1,14 @@
-package com.example.prodroidmovielist
+package com.example.prodroidmovielist.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import coil.network.HttpException
 import com.example.prodroidmovielist.data.model.movies.ResultsDto
-import com.example.prodroidmovielist.data.remote.DataSource
+import com.example.prodroidmovielist.data.remote.MoviesDataSource
 import kotlinx.io.IOException
 
 class PagingSource(
-    private val remoteDataSource: DataSource,
+    private val remoteDataSource: MoviesDataSource,
 ) : PagingSource<Int, ResultsDto>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ResultsDto> {

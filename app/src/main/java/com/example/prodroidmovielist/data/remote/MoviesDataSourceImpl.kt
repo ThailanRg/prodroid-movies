@@ -27,7 +27,7 @@ import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-class DataSourceImpl : DataSource {
+class MoviesDataSourceImpl : MoviesDataSource {
 
     override suspend fun movies(page: String): MoviesDto {
         val httpClient = setupHttpClient()

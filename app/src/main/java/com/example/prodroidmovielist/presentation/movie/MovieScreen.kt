@@ -118,13 +118,18 @@ fun MovieScreen(
 
                                 Column {
                                     StarIcon()
-                                    Row {
-                                        Text(text = uiState.movie.voteAverage.toString())
+                                    Row(
+                                        modifier = Modifier.padding(top = CustomDimens.dimens.spaceBy)
+                                    ) {
+                                        Text(
+                                            text = uiState.movie.voteAverage.toString(),
+                                            style = MaterialTheme.typography.bodyMedium
+                                        )
                                         Text(
                                             text = context.getString(
                                                 R.string.vote_count,
                                                 uiState.movie.voteCount.toString(),
-                                            ),
+                                            ), style = MaterialTheme.typography.bodyMedium,
                                         )
                                     }
                                 }

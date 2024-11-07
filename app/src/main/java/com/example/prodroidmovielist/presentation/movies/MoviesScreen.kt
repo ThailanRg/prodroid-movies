@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -19,8 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.prodroidmovielist.R
-import com.example.prodroidmovielist.presentation.component.MoviesItem
-import com.example.prodroidmovielist.presentation.component.ShimmerMovies
 import com.example.prodroidmovielist.presentation.theme.CustomDimens
 import com.example.prodroidmovielist.presentation.theme.ProdroidMovieListTheme
 import com.example.prodroidmovielist.presentation.theme.backgroundGradient
@@ -29,13 +30,13 @@ import kotlinx.coroutines.flow.flow
 
 @Composable
 fun MoviesScreen(
-    uiState: MoviesUiState,
+    uiState: MoviesIntent.MoviesUiState,
     modifier: Modifier = Modifier,
-    onClick: (String) -> Unit = {},
-    event: (MoviesIntent) -> Unit = {},
+    onClick: (String) -> Unit = {}
 ) {
 
     val lazyMovies = uiState.movies.collectAsLazyPagingItems()
+    val listState = rememberLazyGridState()
 
     lazyMovies.apply {
         when {
@@ -69,6 +70,7 @@ fun MoviesScreen(
         )
     }) { padding ->
         LazyVerticalGrid(
+            state = listState,
             modifier = modifier
                 .padding(padding)
                 .fillMaxSize()
@@ -78,21 +80,16 @@ fun MoviesScreen(
             horizontalArrangement = Arrangement.spacedBy(CustomDimens.dimens.spaceBy),
             contentPadding = PaddingValues(CustomDimens.dimens.containerPadding)
         ) {
-            if (lazyMovies.itemCount > 0) {
-                items(
-                    count = lazyMovies.itemCount,
-                ) { position ->
+            items(
+                count = lazyMovies.itemCount,
+                key = { it.hashCode() },
+                itemContent = { movie ->
                     MoviesItem(
-                        movie = lazyMovies[position], onClick = onClick
+                        movie = lazyMovies[movie],
+                        onClick = onClick
                     )
                 }
-            } else {
-                items(
-                    count = List(8){it}.size,
-                ) {
-                    ShimmerMovies(isLoading = uiState.isLoading)
-                }
-            }
+            )
         }
     }
 }
@@ -101,7 +98,7 @@ fun MoviesScreen(
 @Composable
 fun ListScreenPreview() {
     ProdroidMovieListTheme {
-        MoviesScreen(MoviesUiState(movies = flow { }))
+        MoviesScreen(MoviesIntent.MoviesUiState(movies = flow { }))
     }
 }
 

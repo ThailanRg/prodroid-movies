@@ -54,7 +54,7 @@ val Typography = Typography(
         fontSize = 10.sp,
         lineHeight = 10.sp,
         color = Color.White,
-        letterSpacing = 0.5.sp
+        letterSpacing = 0.0.sp
     ),
 
 )

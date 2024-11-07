@@ -1,18 +1,18 @@
 package com.example.prodroidmovielist.data.repository
 
-import com.example.prodroidmovielist.data.remote.DataSource
+import com.example.prodroidmovielist.data.remote.MoviesDataSource
 
 import kotlinx.coroutines.flow.Flow
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.prodroidmovielist.PagingSource
+import com.example.prodroidmovielist.data.PagingSource
 import com.example.prodroidmovielist.data.model.movies.ResultsDto
 
-class RepositoryImpl(
-    private val dataSource: DataSource,
+class MoviesRepositoryImpl(
+    private val dataSource: MoviesDataSource,
     private val pagingSource: PagingSource,
-) : Repository {
+) : MoviesRepository {
     override suspend fun movies() : Flow<PagingData<ResultsDto>> {
         return Pager(
             config = PagingConfig(pageSize = 10),

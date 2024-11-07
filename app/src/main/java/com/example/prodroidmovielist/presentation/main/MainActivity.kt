@@ -17,7 +17,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
-//        enableEdgeToEdge()
         setContent {
             ProdroidMovieListTheme {
                 App()
@@ -29,6 +28,7 @@ class MainActivity : ComponentActivity() {
 @SuppressLint("SuspiciousIndentation")
 @Composable
 fun App() {
+
     val controller = rememberNavController()
 
     NavHost(
@@ -36,11 +36,10 @@ fun App() {
         startDestination = Routes.Movies
     ) {
         navigateToMovies {
-            controller.navigate(Routes.Movie(it))
+            controller.navigate(it)
         }
         navigateToMovie{
             controller.popBackStack()
         }
     }
-
 }

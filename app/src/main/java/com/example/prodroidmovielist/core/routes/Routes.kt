@@ -2,10 +2,10 @@ package com.example.prodroidmovielist.core.routes
 
 import kotlinx.serialization.Serializable
 
-object Routes {
+sealed class Routes {
     @Serializable
-    object Movies
+    data object Movies : Routes()
 
     @Serializable
-    data class Movie(val id:String)
+    data class Movie(val id:String) : Routes()
 }

@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "prodroid movie list"
 include(":app")
+include(":movies")

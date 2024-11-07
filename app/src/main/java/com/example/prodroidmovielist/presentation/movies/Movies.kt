@@ -1,4 +1,4 @@
-package com.example.prodroidmovielist.presentation.component
+package com.example.prodroidmovielist.presentation.movies
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,16 +18,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.prodroidmovielist.R
 import com.example.prodroidmovielist.data.model.movies.ResultsDto
-import com.example.prodroidmovielist.presentation.theme.CustomDimens
 import com.example.prodroidmovielist.presentation.theme.black_1
 
 @Composable
@@ -40,38 +42,44 @@ fun MoviesItem(
         modifier = modifier
             .fillMaxSize()
             .clickable { onClick(movie?.id.toString()) },
-        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Box {
+        Box(
+            contentAlignment = Alignment.Center
+        ) {
             AsyncImage(
                 model = movie?.loadImage().orEmpty(),
                 placeholder = painterResource(R.drawable.placeholder),
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().heightIn(220.dp)
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = 220.dp)
             )
             Column(
                 modifier = Modifier
                     .height(100.dp)
-                    .background(
-                        brush = Brush.verticalGradient(
-                            colors = listOf(black_1, black_1, black_1, Color.Transparent).reversed()
-                        )
-                    )
-                    .align(Alignment.BottomEnd),
-                verticalArrangement = Arrangement.Center,
+                    .fillMaxWidth()
+                    .background(brush = Brush.verticalGradient(colors = listOf(black_1, black_1, black_1, Color.Transparent).reversed())).align(Alignment.BottomEnd),
+                verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 MovieInfoText(
                     text = movie?.title.orEmpty(),
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.wrapContentSize(),
+                    lineHeight = 14.sp,
                     style = MaterialTheme.typography.bodyLarge
                 )
-                MovieInfoText(
-                    text = movie?.overview.orEmpty(),
-                    maxLines = 2,
-                    modifier = Modifier.fillMaxWidth(),
-                    overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.bodyMedium
-                )
+                if(movie?.overview.orEmpty().isNotEmpty()){
+                    MovieInfoText(
+                        text = movie?.overview.orEmpty(),
+                        modifier = Modifier.fillMaxWidth(),
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                } else {
+                    MovieInfoText(
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
             }
         }
     }
@@ -79,19 +87,25 @@ fun MoviesItem(
 
 @Composable
 fun MovieInfoText(
-    text: String,
-    maxLines: Int = Int.MAX_VALUE,
-    overflow: TextOverflow = TextOverflow.Clip,
+    text: String = "-",
+    maxLines: Int = 2,
+    overflow: TextOverflow = TextOverflow.Ellipsis,
     style: TextStyle = LocalTextStyle.current,
-    modifier: Modifier = Modifier
-) {
+    modifier: Modifier = Modifier,
+    lineHeight: TextUnit = TextUnit.Unspecified,
+    letterSpacing: TextUnit = TextUnit.Unspecified,
+    fontSize: TextUnit = TextUnit.Unspecified,
+    ) {
     Text(
         text = text,
         style = style,
         maxLines = maxLines,
-        overflow = overflow,
+        fontSize = fontSize,
         textAlign = TextAlign.Center,
-        modifier = modifier.padding(top = CustomDimens.dimens.containerPadding),
+        lineHeight = lineHeight,
+        letterSpacing = letterSpacing,
+        overflow = overflow,
+        modifier = modifier
     )
 }
 

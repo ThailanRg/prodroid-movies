@@ -5,7 +5,7 @@ import com.example.prodroidmovielist.data.model.movie.MovieDto
 import com.example.prodroidmovielist.data.model.movies.ResultsDto
 import kotlinx.coroutines.flow.Flow
 
-interface Repository {
+interface MoviesRepository {
     suspend fun movies(): Flow<PagingData<ResultsDto>>
     suspend fun movie(id:String): MovieDto
 }

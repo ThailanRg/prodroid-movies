@@ -14,6 +14,7 @@ class MoviesIntent {
 
     sealed class MoviesEvent {
         data object InitScreen : MoviesEvent()
+        data class Loading(val isLoading: Boolean = true) : MoviesEvent()
         data class SendEffect(val routes: Routes) : MoviesEvent()
     }
 

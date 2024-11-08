@@ -5,10 +5,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.example.prodroidmovielist.core.routes.Routes
-import com.example.prodroidmovielist.core.routes.Routes.Movie
 import com.example.prodroidmovielist.core.routes.Routes.Movies
 import com.example.prodroidmovielist.presentation.movies.MoviesIntent.MoviesEvent.InitScreen
-import com.example.prodroidmovielist.presentation.movies.MoviesIntent.MoviesEvent.SendEffect
 import org.koin.androidx.compose.koinViewModel
 
 fun NavGraphBuilder.navigateToMovies(
@@ -29,8 +27,8 @@ fun NavGraphBuilder.navigateToMovies(
 
         MoviesScreen(
             uiState = uiState.value,
-            onClick = { itemId ->
-                viewModel.handleIntent(SendEffect(Movie(itemId)))
+            onEvent = { event ->
+                viewModel.handleIntent(event)
             }
         )
     }

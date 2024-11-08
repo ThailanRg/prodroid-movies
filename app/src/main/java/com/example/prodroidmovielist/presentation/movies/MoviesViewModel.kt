@@ -7,6 +7,7 @@ import com.example.prodroidmovielist.domain.MoviesUseCase
 import com.example.prodroidmovielist.presentation.movies.MoviesIntent.MoviesEffect.GoToDetail
 import com.example.prodroidmovielist.presentation.movies.MoviesIntent.MoviesEvent
 import com.example.prodroidmovielist.presentation.movies.MoviesIntent.MoviesEvent.InitScreen
+import com.example.prodroidmovielist.presentation.movies.MoviesIntent.MoviesEvent.Loading
 import com.example.prodroidmovielist.presentation.movies.MoviesIntent.MoviesEvent.SendEffect
 import com.example.prodroidmovielist.presentation.movies.MoviesIntent.MoviesUiState
 import kotlinx.coroutines.channels.Channel
@@ -29,6 +30,7 @@ class MoviesViewModel(
     fun handleIntent(event: MoviesEvent) {
         when (event) {
             InitScreen -> initScreen()
+            is Loading -> loadingChange(event.isLoading)
             is SendEffect -> sendEffect(event.routes)
         }
     }
@@ -36,6 +38,12 @@ class MoviesViewModel(
     private fun initScreen() {
         viewModelScope.launch {
             updateState(_uiState.value.copy(movies = useCase()))
+        }
+    }
+
+    private fun loadingChange(event:Boolean) {
+        viewModelScope.launch {
+            updateState(_uiState.value.copy(isLoading = event))
         }
     }
 

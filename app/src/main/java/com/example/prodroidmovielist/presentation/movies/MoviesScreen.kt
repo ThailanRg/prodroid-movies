@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -32,7 +30,7 @@ import kotlinx.coroutines.flow.flow
 fun MoviesScreen(
     uiState: MoviesIntent.MoviesUiState,
     modifier: Modifier = Modifier,
-    onClick: (String) -> Unit = {}
+    onClick: (String) -> Unit = {},
 ) {
 
     val lazyMovies = uiState.movies.collectAsLazyPagingItems()

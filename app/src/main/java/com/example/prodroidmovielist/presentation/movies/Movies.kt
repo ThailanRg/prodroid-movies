@@ -101,6 +101,7 @@ fun MovieInfoText(
         style = style,
         maxLines = maxLines,
         fontSize = fontSize,
+        minLines = 2,
         textAlign = TextAlign.Center,
         lineHeight = lineHeight,
         letterSpacing = letterSpacing,

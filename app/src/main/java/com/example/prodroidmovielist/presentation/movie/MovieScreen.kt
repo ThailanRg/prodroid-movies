@@ -154,7 +154,7 @@ fun StarIcon(
     var positionClicked by remember { mutableIntStateOf(0) }
 
     LazyRow(
-        horizontalArrangement = Arrangement.spacedBy(CustomDimens.dimens.spaceBy)
+        horizontalArrangement = Arrangement.spacedBy(CustomDimens.dimens.spaceBySmall)
     ) {
         items(count = List(maxStart) { it }.size) { position ->
 

@@ -14,7 +14,8 @@ data class Dimens(
     val containerPadding : Dp = 16.dp,
     val spaceSection : Dp = 8.dp,
     val verticalContainerPadding : Dp = 16.dp,
-    val spaceBy : Dp = 8.dp,
+    val spaceBy : Dp = 16.dp,
+    val spaceBySmall : Dp = 8.dp,
 )
 
 internal val LocalDimens = staticCompositionLocalOf { Dimens() }

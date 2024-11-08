@@ -18,7 +18,7 @@ fun NavGraphBuilder.navigateToMovies(
 
         val viewModel = koinViewModel<MoviesViewModel>()
         val uiState = viewModel.uiState.collectAsState()
-        val effect = viewModel.event
+        val effect = viewModel.effect
 
         LaunchedEffect(Unit) {
             viewModel.handleIntent(InitScreen)

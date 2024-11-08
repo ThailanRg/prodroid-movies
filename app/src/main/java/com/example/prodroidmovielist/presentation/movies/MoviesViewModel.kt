@@ -24,7 +24,7 @@ class MoviesViewModel(
     val uiState: StateFlow<MoviesUiState> = _uiState
 
     private var _effect = Channel<GoToDetail>()
-    val event = _effect.receiveAsFlow()
+    val effect = _effect.receiveAsFlow()
 
     fun handleIntent(event: MoviesEvent) {
         when (event) {

@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.example.prodroidmovielist.core.routes.Routes
 import com.example.prodroidmovielist.core.routes.Routes.Movies
 import com.example.prodroidmovielist.presentation.movies.MoviesIntent.MoviesEvent.InitScreen
+import com.example.prodroidmovielist.presentation.theme.ProdroidMovieListTheme
 import org.koin.androidx.compose.koinViewModel
 
 fun NavGraphBuilder.navigateToMovies(
@@ -24,12 +25,13 @@ fun NavGraphBuilder.navigateToMovies(
                 route.routes?.let { route -> navigateTo(route) }
             }
         }
-
-        MoviesScreen(
-            uiState = uiState.value,
-            onEvent = { event ->
-                viewModel.handleIntent(event)
-            }
-        )
+        ProdroidMovieListTheme {
+            MoviesScreen(
+                uiState = uiState.value,
+                onEvent = { event ->
+                    viewModel.handleIntent(event)
+                }
+            )
+        }
     }
 }

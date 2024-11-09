@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
@@ -14,8 +15,10 @@ import com.example.prodroidmovielist.presentation.movies.navigateToMovies
 import com.example.prodroidmovielist.presentation.theme.ProdroidMovieListTheme
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         installSplashScreen()
         setContent {
             ProdroidMovieListTheme {
@@ -38,7 +41,7 @@ fun App() {
         navigateToMovies {
             controller.navigate(it)
         }
-        navigateToMovie{
+        navigateToMovie {
             controller.popBackStack()
         }
     }

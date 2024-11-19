@@ -2,42 +2,49 @@ package com.example.prodroidmovielist.di
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.example.prodroidmovielist.data.PagingSource
-import com.example.prodroidmovielist.data.remote.MoviesDataSource
-import com.example.prodroidmovielist.data.remote.MoviesDataSourceImpl
-import com.example.prodroidmovielist.data.repository.MoviesRepository
-import com.example.prodroidmovielist.data.repository.MoviesRepositoryImpl
-import com.example.prodroidmovielist.domain.MovieUseCase
-import com.example.prodroidmovielist.domain.MoviesUseCase
-import com.example.prodroidmovielist.presentation.movie.MovieViewModel
-import com.example.prodroidmovielist.presentation.movies.MoviesViewModel
-import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
+import org.koin.core.module.dsl.bind
+
+import br.com.feat_movie.domain.MovieUseCase
+import br.com.feat_movie.data.remote.MovieDataSourceImpl
+import br.com.feat_movie.data.remote.MovieDataSource
+import br.com.feat_movie.presentation.viewmodel.MovieViewModel
+import br.com.feat_movie.data.repository.MovieRepository
+import br.com.feat_movie.data.repository.MovieRepositoryImpl
+
+import br.com.feat_movies.domain.MoviesUseCase
+import br.com.feat_movies.data.remote.MoviesDataSourceImpl
+import br.com.feat_movies.data.remote.MoviesDataSource
+import br.com.feat_movies.data.repository.MoviesPagingSource
+import br.com.feat_movies.presentation.viewmodel.MoviesViewModel
+import br.com.feat_movies.data.repository.MoviesRepository
+import br.com.feat_movies.data.repository.MoviesRepositoryImpl
 
 private val provideDataLayerMovies = module {
+    singleOf(::MovieDataSourceImpl) { bind<MovieDataSource>() }
+    singleOf(::MovieRepositoryImpl) { bind<MovieRepository>() }
+
     singleOf(::MoviesDataSourceImpl) { bind<MoviesDataSource>() }
     singleOf(::MoviesRepositoryImpl) { bind<MoviesRepository>() }
 }
 
 private val provideDomainLayerMovies = module {
-    singleOf(::MoviesUseCase)
-    singleOf(::MovieUseCase)
+    factoryOf(::MovieUseCase)
+    factoryOf(::MoviesUseCase)
 }
 
 private val providePresentationLayerMovies = module {
     viewModelOf(::MovieViewModel)
     viewModelOf(::MoviesViewModel)
-    factoryOf(::PagingSource)
-    single {
-        PagingConfig(pageSize = 10)
-    }
+    factoryOf(::MoviesPagingSource)
+    single { PagingConfig(pageSize = 10) }
     single {
         Pager(
             config = get(),
-            pagingSourceFactory = { get<PagingSource>() }
+            pagingSourceFactory = { get<MoviesPagingSource>() }
         )
     }
 }

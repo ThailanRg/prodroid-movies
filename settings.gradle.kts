@@ -21,4 +21,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "prodroid movie list"
 include(":app")
-include(":movies")
+include(":feat-movies")
+include(":feat-movie")
+include(":core-android")
+include(":core-kotlin")
+include(":core-network")
+include(":core-design-system")
+include(":core-navigation")

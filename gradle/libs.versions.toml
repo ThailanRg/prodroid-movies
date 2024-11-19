@@ -1,6 +1,6 @@
 [versions]
 agp = "8.7.2"
-coilCompose = "2.5.0"
+coilCompose = "2.6.0"
 koinAndroid = "4.0.0"
 kotlin = "2.0.20"
 coreKtx = "1.15.0"
@@ -11,13 +11,13 @@ ktorClientCio = "3.0.0"
 ktorVersion = "3.0.0"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
-composeBom = "2024.10.01"
-navigationCompose = "2.8.3"
+composeBom = "2024.11.00"
+navigationCompose = "2.8.4"
 slf4j = "1.7.36"
 serialization = "1.7.3"
-plugin-serialization = "1.9.10"
-paging = "3.3.2"
-pagingCompose = "3.3.2"
+plugin-serialization = "2.0.0"
+paging = "3.3.4"
+pagingCompose = "3.3.4"
 core-splashscreen = "1.0.1"
 
 [libraries]
@@ -64,4 +64,5 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "plugin-serialization" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+

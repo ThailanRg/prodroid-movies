@@ -11,6 +11,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core-android" />
+            <option value="$PROJECT_DIR$/core-design-system" />
+            <option value="$PROJECT_DIR$/core-kotlin" />
+            <option value="$PROJECT_DIR$/core-navigation" />
+            <option value="$PROJECT_DIR$/core-network" />
+            <option value="$PROJECT_DIR$/feat-movie" />
+            <option value="$PROJECT_DIR$/feat-movies" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

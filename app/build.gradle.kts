@@ -41,6 +41,19 @@ android {
 }
 
 dependencies {
+    implementation(project(":core-design-system")){
+        exclude(module = ":core-kotlin")
+    }
+    implementation(project(":core-kotlin"))
+
+    implementation(project(":feat-movies")){
+        exclude(module = ":core-design-system")
+        exclude(module = ":core-kotlin")
+    }
+    implementation(project(":feat-movie")){
+        exclude(module = ":core-design-system")
+    }
+    implementation(project(":core-navigation"))
     //JETBRAINS
     implementation(libs.jetbrains.kotlin.serialization)
     //ANDROIDX
@@ -66,12 +79,6 @@ dependencies {
     //IO
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.cio)
-    implementation(libs.ktor.client.android)
-    implementation(libs.ktor.client.logging)
-    implementation(libs.ktor.client.content.negotiation)
-    implementation(libs.ktor.serialization.kotlinx)
     implementation(libs.coil.compose)
     //THIRD
     implementation(libs.slf4j.android)

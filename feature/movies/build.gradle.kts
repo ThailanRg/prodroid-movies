@@ -1,20 +1,17 @@
 plugins {
     alias(libs.plugins.serialization)
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "com.example.prodroidmovielist"
-    compileSdk = 35
+    namespace = "br.com.feature.movies"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.prodroidmovielist"
         minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,17 +38,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:design-system")){
-        exclude(module = ":core:kotlin")
-    }
+    implementation(project(":core:design-system"))
+    implementation(project(":core:network"))
+    implementation(project(":core:android"))
     implementation(project(":core:kotlin"))
-    implementation(project(":feature:movies")){
-        exclude(module = ":core:design-system")
-        exclude(module = ":core:kotlin")
-    }
-    implementation(project(":feature:movie")){
-        exclude(module = ":core:design-system")
-    }
     implementation(project(":core:navigation"))
     //JETBRAINS
     implementation(libs.jetbrains.kotlin.serialization)

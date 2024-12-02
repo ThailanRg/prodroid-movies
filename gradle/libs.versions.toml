@@ -15,10 +15,12 @@ composeBom = "2024.11.00"
 navigationCompose = "2.8.4"
 slf4j = "1.7.36"
 serialization = "1.7.3"
-plugin-serialization = "2.0.0"
+plugin-serialization = "2.0.21"
 paging = "3.3.4"
 pagingCompose = "3.3.4"
 core-splashscreen = "1.0.1"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 [libraries]
 
@@ -57,7 +59,9 @@ ktor-serialization-kotlinx = { module = "io.ktor:ktor-serialization-kotlinx-json
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 
 #THIRD
-slf4j-android = { module = "org.slf4j:slf4j-android", version.ref = "slf4j" } # implementacao de logger
+slf4j-android = { module = "org.slf4j:slf4j-android", version.ref = "slf4j" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" } # implementacao de logger
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -65,4 +69,3 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "plugin-serialization" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-
